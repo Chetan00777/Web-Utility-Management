@@ -29,7 +29,7 @@ import json
 lambda_client = boto3.client('lambda', region_name='us-east-1')
 
 SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:263072075949:utility-alerts-topic-2025'
-sns = boto3.client('sns')
+sns = boto3.client('sns', region_name='us-east-1') 
 
 def generate_presigned_url(s3_key, expiration=3600):
     s3_client = boto3.client('s3', region_name='us-east-1')
