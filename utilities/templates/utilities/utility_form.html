@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Form - Utility Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📝 Add/Edit Utility Record</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <div class="form-group">
+                <label for="id_type">Utility Type</label>
+                {{ form.type }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_usage">Usage</label>
+                {{ form.usage }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_date">Date</label>
+                {{ form.date }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_notes">Notes</label>
+                {{ form.notes }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_file">File (optional)</label>
+                {{ form.file }}
+            </div>
+            
+            <button type="submit">💾 Save Record</button>
+        </form>
+        <a href="{% url 'dashboard' %}" class="back-link">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

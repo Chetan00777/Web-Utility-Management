@@ -1,0 +1,19 @@
+{
+  "LambdaFunctionConfigurations": [
+    {
+      "Id": "utility-file-upload-trigger",
+      "LambdaFunctionArn": "arn:aws:lambda:us-east-1:263072075949:function:utility-file-processor",
+      "Events": ["s3:ObjectCreated:*"],
+      "Filter": {
+        "Key": {
+          "FilterRules": [
+            {
+              "Name": "prefix",
+              "Value": "uploads/"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

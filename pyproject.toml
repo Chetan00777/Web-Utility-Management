@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "utility_aws_pkg_chetanpatil"
+version = "0.0.2"
+authors = [
+    { name="Chetan Patil", email="chetanpatil0050@gmail.com" },
+]
+description = "A Python library for managing AWS services in utility management applications"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "boto3>=1.28.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/chetanpatil/utility-aws-lib"
+"Bug Tracker" = "https://github.com/chetanpatil/utility-aws-lib/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/utility_aws_pkg"]
