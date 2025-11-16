@@ -68,7 +68,8 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
@@ -83,5 +84,3 @@ EMAIL_HOST_USER = 'chetanpatil0050@gmail.com'
 EMAIL_HOST_PASSWORD = 'bkcwqroiyaihvlng'
 DEFAULT_FROM_EMAIL = 'Utility Management '
 PASSWORD_RESET_TIMEOUT = 86400
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
