@@ -13,7 +13,7 @@ from django.dispatch import receiver
 from django.db import IntegrityError
 from .models import Utility
 from .forms import UtilityForm
-from aws_utils import (
+from python_library.utility_aws_pkg_chetanpatil import (
     upload_utility_file,
     add_utility_record,
     delete_utility_record,
