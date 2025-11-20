@@ -9,20 +9,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.9'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+        cache: 'pip'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Run tests
-        run: python manage.py test
+    - name: Run Django tests
+      run: |
+        python manage.py test
 
-      # ...other steps for deploy
+    - name: Collect static files
+      run: |
+        python manage.py collectstatic --noinput
+
+    - name: Deploy to AWS Elastic Beanstalk
+      env:
+        AWS_ACCESS_KEY_ID: ${{ ASIAT2QCRKCWZD34PMRC }}
+        AWS_SECRET_ACCESS_KEY: ${{ d+MsH4IYxC366wts+y5Xu+urjaaSxFVZagBjMbsx }}
+        AWS_REGION: ${{ us-east-1 }}
+      run: |
+        pip install awsebcli
+        eb init utility-management-env-20251115 --platform python-3.9 --region $AWS_REGION
+        eb use utility-management-env-20251115
+        eb deploy --staged
