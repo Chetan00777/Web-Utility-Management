@@ -28,6 +28,9 @@ jobs:
 
     - name: Collect static files
       run: python manage.py collectstatic --noinput
+      
+    - name: Sleep to allow EB version sync
+      run: sleep 10
 
     - name: Deploy to AWS Elastic Beanstalk
       env:
