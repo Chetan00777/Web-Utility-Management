@@ -41,4 +41,4 @@ jobs:
         pip install awsebcli
         eb init utility-management-env-20251115 --platform python-3.9 --region $AWS_REGION
         eb use utility-management-env-20251115
-        eb deploy --staged
+        eb deploy
