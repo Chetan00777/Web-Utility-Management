@@ -14,7 +14,6 @@ cffi==2.0.0
 chardet==4.0.0
 charset-normalizer==3.4.4
 chevron==0.13.1
-cloud-init==22.2.2
 colorama==0.4.6
 configobj==5.0.6
 cryptography==36.0.1
