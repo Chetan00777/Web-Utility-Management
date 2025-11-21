@@ -40,6 +40,6 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
         pip install awsebcli
-        eb init utility-management-env-20251115 --platform python-3.9 --region $AWS_REGION
+        eb init utility_management_20251115 --platform python-3.9 --region $AWS_REGION
         eb use utility-management-env-20251115
         eb deploy
