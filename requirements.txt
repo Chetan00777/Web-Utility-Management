@@ -26,7 +26,6 @@ docutils==0.16
 fabric==3.2.2
 git-filter-repo==2.47.0
 git-remote-codecommit==1.17
-gpg==1.23.2
 idna==2.10
 ikp3db==1.4.2
 invoke==2.2.1
