@@ -24,19 +24,17 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Django tests
-      run: |
-        python manage.py test
+      run: python manage.py test
 
     - name: Collect static files
-      run: |
-        python manage.py collectstatic --noinput
+      run: python manage.py collectstatic --noinput
 
     - name: Deploy to AWS Elastic Beanstalk
       env:
-        AWS_ACCESS_KEY_ID: ASIAT2QCRKCWXR5OMGMO
-        AWS_SECRET_ACCESS_KEY: jXh98yCTqoa+Vy3Xm8GUI9WTMrZXgMrdKs42NSAi
-        AWS_SESSION_TOKEN: IQoJb3JpZ2luX2VjEEYaCXVzLXdlc3QtMiJGMEQCIGoiwBjrEDPiCA8G+zeWnBmBDylLyiY8HCOQYefq64BYAiAgc6BMJtWxeFi5MHTKZvZru8dTfeZfcwQ8rLqugHmIbyq0AggPEAEaDDI2MzA3MjA3NTk0OSIM24agz2LovC3XvfBVKpECRs5xO1tkMK4GZmP0czZH+SVO7xlf08bpNGlyGx+y4osU5I/88hnaSQhDLMHbzf2RwYVEsFgpwjqBt2QRt1WlFJtNwKOwrSI/vonpONkz1wvUVT7l4Ifn7bLeh8dn28YTVrhyO+CV2kb1c4eAUTnudzuJe6y1md7P9zjUCrZUeP+OG9jKJ4aYJtc12VN2qG/muv2ybwcLno96ByPAgbBWTRdlATji9oTe3/Ylmmjf4VdsuX4qkTufmtzoJlGHgAcYERZm8OWl90YR0gGeKnc7muG7CMtS/RfWmHdw8kRBCi4zboYHqnBrZfH89WOlQs8edUwWZEN4n71GoD62SNgxxUHheivvUNaA+Tkg6f4fHsiBMMjRgckGOp4Bnuc/JyfqWjC5spBrDJr4r/KhvJueedDA3+dkCPm35B5ZYPeVrWB9vzE8WLto1DgfDKBMCbz3Bb0Apgmag20SAc+/e8hU6AXq+MAwucz/RpzJTrKVihjcvtJeDj/9qhqvYJBrVpNjnQRpiWUYdFm37XaOuEcivLCmtVzXrNs/HTp7x81lIkjqeip8BQxy1BRPisdXxnxWNFKr+Cw5vH0=
-        AWS_REGION: us-east-1
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}   # Only include if session credentials required
+        AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
         pip install awsebcli
         eb init utility-management-env-20251115 --platform python-3.9 --region $AWS_REGION
